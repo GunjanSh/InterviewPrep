@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2.Recursion
+{
+    internal class PrintNameNTimes
+    {
+        public static void PrintNames()
+        {
+            Console.WriteLine("Enter number of times to print names - N");
+            string input = Console.ReadLine();
+
+            int.TryParse(input, out var n);
+
+            Console.WriteLine("Without Recursion");
+            for (int idx = 1; idx <= n; idx++)
+            {
+                Console.WriteLine("Name {0}", idx);
+            }
+
+            Console.WriteLine("With Recursion");
+
+            Print(1, n);
+        }
+
+        static void Print(int index, int N)
+        {
+            if (index > N)
+            {
+                return;
+            }
+
+            Console.WriteLine("Name {0}", index);
+
+            Print(index + 1, N);
+        }
+
+    }
+}

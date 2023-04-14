@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Patterns\Chain of Responsibility\" />
+    <Folder Include="Patterns\Adapter\" />
+    <Folder Include="Patterns\Facade\" />
+    <Folder Include="Patterns\Observer\" />
+  </ItemGroup>
+
+</Project>
