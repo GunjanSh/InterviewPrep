@@ -13,7 +13,47 @@ namespace ConsoleApp2.Recursion
             List<int> numbers = new List<int> { 2, 3, 6, 7 };
             int target = 7;
             //Ouput --> [2, 2, 3] [7]
+            //Explanation:
+            // 2 and 3 are candidates, 2+2+3 = 7, Note that 2 can be used multiple times.
+            //7 is a candidate, 7 = 7
+            //These are the only two combinations.
+            List<List<int>> output = new List<List<int>>();
+            List<int> currentList = new List<int>();
+            int initialTarget = 0;
 
+            GetCombinations(numbers, 0, output, currentList, target, ref initialTarget);
+        }
+
+        private static void GetCombinations(List<int> numbers, int index, List<List<int>> output, List<int> currentList, int target, ref int ongoingTarget)
+        {
+            if (index == numbers.Count)
+            {
+                if (ongoingTarget == target)
+                {
+                    output.Add(new List<int>(currentList));
+                    return;
+                }
+
+                return;
+            }
+
+            int remainingTarget = target - ongoingTarget;
+
+            // If we do not give this condition, it will pick number from the same index until we get stack overflow exception.
+            // Pick until the remaining target.
+
+            if (numbers[index] <= remainingTarget)
+            {
+                currentList.Add(numbers[index]);
+                ongoingTarget += numbers[index];
+
+                GetCombinations(numbers, index, output, currentList, target, ref ongoingTarget);
+
+                currentList.Remove(numbers[index]);
+                ongoingTarget -= numbers[index];
+            }
+
+            GetCombinations(numbers, index + 1, output, currentList, target, ref ongoingTarget);
         }
     }
 }

@@ -9,6 +9,10 @@
     <Folder Include="Patterns\Chain of Responsibility\" />
     <Folder Include="Patterns\Adapter\" />
     <Folder Include="Patterns\Facade\" />
+    <Folder Include="Patterns\Creational\Builder\" />
+    <Folder Include="Patterns\Creational\" />
+    <Folder Include="Patterns\Behavioral\" />
+    <Folder Include="Patterns\Structural\" />
     <Folder Include="Patterns\Observer\" />
   </ItemGroup>
 

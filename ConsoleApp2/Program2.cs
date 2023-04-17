@@ -128,7 +128,13 @@ namespace ConsoleApp2
 
             //CountSubsequenceWithSumK.CountSubsequences();
 
-            MergeSort.MergeSortAlgo();
+            //MergeSort.MergeSortAlgo();
+
+            //QuickSortAlgorithm.QuickSortAlgo();
+
+            //_17CombinationSum.CombinationSum();
+
+            _18CombinationSum_II.CombinationSum();
 
             #endregion
 
