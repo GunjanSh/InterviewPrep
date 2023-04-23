@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2.Recursion
 {
+    // https://www.techiedelight.com/difference-between-subarray-subsequence-subset/
+    // https://leetcode.com/discuss/study-guide/1497123/subarrays-vs-subsequence-vs-subsets with time complexities.
     // https://www.scaler.com/topics/difference-between-subarray-subset-and-subsequence/
     // Subarray has same sequence/order of the elements as in the array. subarray can range from size 1 to size of the array
     // [1, 2, 3] --> subarrays --> [1], [2], [3], [1,2], [1,3], [2,3], [1,2,3]

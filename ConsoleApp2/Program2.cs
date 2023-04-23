@@ -134,7 +134,17 @@ namespace ConsoleApp2
 
             //_17CombinationSum.CombinationSum();
 
-            _18CombinationSum_II.CombinationSum();
+            //_18CombinationSum_II.CombinationSum();
+
+            //_19SubsetSum.GetSubsetsSum();
+
+            //_20SubsetSum_II.GetSubsets();
+
+            //_21PrintAllPermutationsOfStringOrArray.GetAllPermutations();
+
+            //_21PrintAllPermutationsOfStringOrArray_SpaceOptimized.GetAllPermutations();
+
+            _22NQueens.NQueens();
 
             #endregion
 

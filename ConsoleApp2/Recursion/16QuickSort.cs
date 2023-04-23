@@ -38,7 +38,7 @@ namespace ConsoleApp2.Recursion
             while (i < j)
             {
                 // Do high-1 as i++ can exceed the boundary
-                // numbers[i] <= key, we put duplicates on the left of the key if it is less than key.
+                // numbers[i] <= key, we put duplicates on the left of the key if it is less than or equal to the key.
                 while (numbers[i] <= key && i <= high-1)
                 {
                     i++;

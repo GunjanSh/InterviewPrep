@@ -17,6 +17,7 @@ namespace ConsoleApp2.Recursion
             List<List<int>> subsList = new List<List<int>>();
             List<int> tempList = new List<int>();
 
+            //NOTE: Check Striver approach.
             Subsequence(0, sum, sum, list, tempList, subsList);
 
             subsList = new List<List<int>>();

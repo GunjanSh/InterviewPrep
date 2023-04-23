@@ -37,7 +37,8 @@ namespace ConsoleApp2.Recursion
             {
                 // numbers[idx] == numbers[idx - 1] , dont pick consecutive elements which are same
                 // idx > index, for the recursion call, if it is the first index in the recursive call, then pick. Recursion call is starting from that index.
-                if (idx > index && numbers[idx] == numbers[idx - 1]) continue;
+                // Either do (idx > index) or (idx != index)
+                if (idx != index && numbers[idx] == numbers[idx - 1]) continue;
 
                 if (numbers[idx] > target)
                 {
