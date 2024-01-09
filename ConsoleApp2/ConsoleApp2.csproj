@@ -23,12 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Patterns\Behavioral\Observer - Stocks Notification\" />
     <Folder Include="Patterns\Behavioral\Strategy\" />
     <Folder Include="Patterns\Creational\Factory\" />
     <Folder Include="Patterns\Creational\Singleton\" />
     <Folder Include="Patterns\Structural\Adapter - GamePlayerAndRobot\" />
-    <Folder Include="Patterns\Structural\Facade - BankMoneyWithdrawal\" />
     <Folder Include="Patterns\Structural\Bridge\" />
   </ItemGroup>
 

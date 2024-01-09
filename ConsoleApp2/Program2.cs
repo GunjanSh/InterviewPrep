@@ -4,10 +4,12 @@ using ConsoleApp2.Graph;
 using ConsoleApp2.LinkedList;
 using ConsoleApp2.MS;
 using ConsoleApp2.Patterns.Behavioral.Chain_of_Responsibility___Math_Operations;
+using ConsoleApp2.Patterns.Behavioral.Observer___Stocks_Notification;
 using ConsoleApp2.Patterns.Behavioral.Visitor;
 using ConsoleApp2.Patterns.Creational.Builder___ProductBuilder;
 using ConsoleApp2.Patterns.Creational.Builder___RobotBuilder;
 using ConsoleApp2.Patterns.Creational.Prototype___PersonDetailsClone;
+using ConsoleApp2.Patterns.Structural.Facade___BankMoneyWithdrawal;
 using ConsoleApp2.Queues;
 using ConsoleApp2.Recursion;
 using ConsoleApp2.Stacks;
@@ -19,6 +21,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace ConsoleApp2
@@ -624,6 +627,12 @@ namespace ConsoleApp2
             #endregion
 
             #region Facade
+
+            BankFacade facade = new BankFacade(12345678, 1234);
+            facade.WithdrawMoney(900);
+            facade.DepositMoney(50);
+            facade.WithdrawMoney(200);
+
             #endregion
 
             #region Bridge Pattern
@@ -663,6 +672,27 @@ namespace ConsoleApp2
             #endregion
 
             #region Observer Pattern
+
+            // Either use Subject, Observer or Publisher, Subscriber terminology.
+            Publisher publisher = new Publisher();
+            IObserver observer = new StockObserver(publisher);
+
+            publisher.SetIbmPrice(123.00);
+            publisher.SetApplePrice(456.12);
+            publisher.SetGooglePrice(789.45);
+
+            IObserver observer2 = new StockObserver(publisher);
+
+            publisher.SetIbmPrice(123.00);
+            publisher.SetApplePrice(456.12);
+            publisher.SetGooglePrice(789.45);
+
+            publisher.Unregister(observer);
+
+            publisher.SetIbmPrice(123.00);
+            publisher.SetApplePrice(456.12);
+            publisher.SetGooglePrice(789.45);
+
             #endregion
 
             #region Visitor Pattern
