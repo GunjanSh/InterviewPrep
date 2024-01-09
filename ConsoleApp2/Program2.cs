@@ -9,6 +9,7 @@ using ConsoleApp2.Patterns.Behavioral.Visitor;
 using ConsoleApp2.Patterns.Creational.Builder___ProductBuilder;
 using ConsoleApp2.Patterns.Creational.Builder___RobotBuilder;
 using ConsoleApp2.Patterns.Creational.Prototype___PersonDetailsClone;
+using ConsoleApp2.Patterns.Structural.Adapter___GamePlayerAndRobot;
 using ConsoleApp2.Patterns.Structural.Facade___BankMoneyWithdrawal;
 using ConsoleApp2.Queues;
 using ConsoleApp2.Recursion;
@@ -624,6 +625,29 @@ namespace ConsoleApp2
             #region Structural Patterns
 
             #region Adapter Pattern
+
+            EnemyTank enemyTank = new EnemyTank();
+            EnemyRobot enemyRobot = new EnemyRobot();
+            EnemyRobotAdapter enemyAdapter = new EnemyRobotAdapter(enemyRobot);
+
+            enemyTank.AssignDriver("Paul");
+            enemyTank.DriveForward();
+            enemyTank.DriveForward();
+            enemyTank.DriveForward();
+            enemyTank.FireWeapon();
+
+            enemyRobot.ReactToHuman("Williams");
+            enemyRobot.WalkForward();
+            enemyRobot.WalkForward();
+            enemyRobot.WalkForward();
+            enemyRobot.SmashWithHands();
+
+            enemyAdapter.AssignDriver("Derek");
+            enemyAdapter.DriveForward();
+            enemyAdapter.DriveForward();
+            enemyAdapter.DriveForward();
+            enemyAdapter.FireWeapon();
+
             #endregion
 
             #region Facade
