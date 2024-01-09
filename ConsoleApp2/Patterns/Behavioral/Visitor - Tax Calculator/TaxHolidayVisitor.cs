@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp2.Patterns.Visitor
+namespace ConsoleApp2.Patterns.Behavioral.Visitor
 {
-    public class TaxVisitor : IVisitor
+    public class TaxHolidayVisitor : IVisitor
     {
         public double Visit(Necessity obj)
         {
             Console.WriteLine("From Necessity tax visitor");
-            return obj.GetPrice() * .18;
+            return obj.GetPrice() * .10;
         }
 
         public double Visit(Tobacco obj)
         {
             Console.WriteLine("From Tobacco tax visitor");
-            return obj.GetPrice() * .32;
+            return obj.GetPrice() * .25;
         }
     }
 }

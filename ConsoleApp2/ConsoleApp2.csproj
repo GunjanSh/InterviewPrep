@@ -3,17 +3,33 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
+    <Configurations>Debug;Release;x64</Configurations>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Patterns\Chain of Responsibility\" />
-    <Folder Include="Patterns\Adapter\" />
-    <Folder Include="Patterns\Facade\" />
-    <Folder Include="Patterns\Creational\Builder\" />
-    <Folder Include="Patterns\Creational\" />
-    <Folder Include="Patterns\Behavioral\" />
-    <Folder Include="Patterns\Structural\" />
-    <Folder Include="Patterns\Observer\" />
+    <Compile Remove="Patterns\Adapter\**" />
+    <Compile Remove="Patterns\Chain of Responsibility\**" />
+    <Compile Remove="Patterns\Facade\**" />
+    <Compile Remove="Patterns\Observer\**" />
+    <EmbeddedResource Remove="Patterns\Adapter\**" />
+    <EmbeddedResource Remove="Patterns\Chain of Responsibility\**" />
+    <EmbeddedResource Remove="Patterns\Facade\**" />
+    <EmbeddedResource Remove="Patterns\Observer\**" />
+    <None Remove="Patterns\Adapter\**" />
+    <None Remove="Patterns\Chain of Responsibility\**" />
+    <None Remove="Patterns\Facade\**" />
+    <None Remove="Patterns\Observer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Patterns\Behavioral\Observer - Stocks Notification\" />
+    <Folder Include="Patterns\Behavioral\Strategy\" />
+    <Folder Include="Patterns\Creational\Factory\" />
+    <Folder Include="Patterns\Creational\Singleton\" />
+    <Folder Include="Patterns\Structural\Adapter - GamePlayerAndRobot\" />
+    <Folder Include="Patterns\Structural\Facade - BankMoneyWithdrawal\" />
+    <Folder Include="Patterns\Structural\Bridge\" />
   </ItemGroup>
 
 </Project>

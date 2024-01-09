@@ -3,7 +3,11 @@ using ConsoleApp2.DP;
 using ConsoleApp2.Graph;
 using ConsoleApp2.LinkedList;
 using ConsoleApp2.MS;
-using ConsoleApp2.Patterns.Visitor;
+using ConsoleApp2.Patterns.Behavioral.Chain_of_Responsibility___Math_Operations;
+using ConsoleApp2.Patterns.Behavioral.Visitor;
+using ConsoleApp2.Patterns.Creational.Builder___ProductBuilder;
+using ConsoleApp2.Patterns.Creational.Builder___RobotBuilder;
+using ConsoleApp2.Patterns.Creational.Prototype___PersonDetailsClone;
 using ConsoleApp2.Queues;
 using ConsoleApp2.Recursion;
 using ConsoleApp2.Stacks;
@@ -176,7 +180,7 @@ namespace ConsoleApp2
 
             FirstDepthFirstSearch.Solve();
 
-            FlippingImages.Solve();
+            //FlippingImages.Solve();
 
             var strToSplit = "5";
             var dsf = strToSplit.Split(",", StringSplitOptions.RemoveEmptyEntries);
@@ -287,22 +291,6 @@ namespace ConsoleApp2
 
             var sumOfNaturalNumbers = SumNNaturalNumbers.Sum(9999);
 
-            TaxVisitor taxVisitor = new TaxVisitor();
-            TaxHolidayVisitor taxHolidayVisitor = new TaxHolidayVisitor();
-
-            Necessity necessity = new Necessity(12.9);
-            var taxedVal = necessity.Accept(taxVisitor);
-            Console.WriteLine("Taxed value for Necessity is {0}", taxedVal);
-
-            var taxedHolidayVal = necessity.Accept(taxHolidayVisitor);
-            Console.WriteLine("Taxed holiday value for Necessity is {0}", taxedHolidayVal);
-
-            Tobacco tobacco = new Tobacco(15.18);
-            var tobaccoTaxedVal = tobacco.Accept(taxVisitor);
-            Console.WriteLine("Taxed value for Tobacco is {0}", tobaccoTaxedVal);
-
-            var tobaccoTaxedHolidayVal = tobacco.Accept(taxHolidayVisitor);
-            Console.WriteLine("Taxed holiday value for Tobacco is {0}", tobaccoTaxedHolidayVal);
 
             List<List<int>> AL = new List<List<int>>()
             {
@@ -552,6 +540,157 @@ namespace ConsoleApp2
             int size = len.Length;
             Console.WriteLine("Total cost for connecting"
                               + " ropes is " + ConnectRopes.minCost(len, size));
+
+            #region Design Patterns
+
+            #region Creational Patterns
+
+            #region Builder Pattern - Robot Builder
+
+            Robot robot = new();
+            IRobotBuilder builder = new OldRobotBuilder(robot);
+            RobotEngineer director = new RobotEngineer(builder);
+            director.MakeRobot();
+            director.PrintRobotDetails();
+
+            #endregion
+
+            #region Builder Pattern - Product Builder
+
+            IProduct product = new Product();
+            IConcreteBuilder productBuilder = new ConcreteBuilder(product);
+            Director productDirector = new Director(productBuilder);
+            productDirector.MinimalViableProduct();
+
+            //Cast as interface is no exposing this method. 
+            //ConcreteBuilder productBuilder = new ConcreteBuilder(product); will avoid requiring a cast.
+            ((ConcreteBuilder)productBuilder).GetProduct();
+
+            ((ConcreteBuilder)productBuilder).ResetProducts();
+
+            productDirector.FullProduct();
+            ((ConcreteBuilder)productBuilder).GetProduct();
+
+            ((ConcreteBuilder)productBuilder).ResetProducts();
+
+            //Builder pattern can be used without a director.
+            productBuilder.BuildPartD();
+
+            ((ConcreteBuilder)productBuilder).GetProduct();
+
+            #endregion
+
+            #region Prototype Pattern
+
+            Person person = new()
+            {
+                Name = "Jack",
+                Age = 30,
+                BirthDate = DateTime.Now.AddYears(-30),
+                IdDetails = new IdInfo(123)
+            };
+
+            Person person2 = person.ShallowCopy();
+            Person person3 = person.DeepCopy();
+
+            Console.WriteLine("Original values of person, person2, person3:");
+            Console.WriteLine("   person instance values: ");
+            Person.DisplayValues(person);
+            Console.WriteLine("   person2 instance values:");
+            Person.DisplayValues(person2);
+            Console.WriteLine("   person3 instance values:");
+            Person.DisplayValues(person3);
+
+            person.Age = 28;
+            person.BirthDate = DateTime.Now.AddYears(-28);
+            person.IdDetails.Id = 456;
+            person.Name = "Tom Cruise";
+
+            Console.WriteLine("Updated values of person, person2, person3:");
+            Console.WriteLine("   person instance values: ");
+            Person.DisplayValues(person);
+            Console.WriteLine("   person2 instance values (reference values have changed) :");
+            Person.DisplayValues(person2);
+            Console.WriteLine("   person3 instance values (everything was kept the same) :");
+            Person.DisplayValues(person3);
+
+            #endregion
+
+            #endregion
+
+            #region Structural Patterns
+
+            #region Adapter Pattern
+            #endregion
+
+            #region Facade
+            #endregion
+
+            #region Bridge Pattern
+            #endregion
+
+            #endregion
+
+            #region Behavioral Patterns
+
+            #region Chain Of Responsibility Pattern
+
+            MathRequest mathRequest = new()
+            {
+                Operation = "ADD",
+                Operand1 = 12,
+                Operand2 = 4
+            };
+
+            AddHandler addHandler = new();
+            MultipicationHandler multipicationHandler = new();
+            DivisonHandler divisonHandler = new();
+
+            addHandler.SetNext(multipicationHandler);
+            multipicationHandler.SetNext(divisonHandler);
+
+            addHandler.Execute(mathRequest);
+            
+            mathRequest.Operation = "MULTIPLY";
+            addHandler.Execute(mathRequest);
+
+            mathRequest.Operation = "DIVIDE";
+            addHandler.Execute(mathRequest);
+
+            mathRequest.Operation = "POW";
+            addHandler.Execute(mathRequest);
+
+            #endregion
+
+            #region Observer Pattern
+            #endregion
+
+            #region Visitor Pattern
+
+            TaxVisitor taxVisitor = new TaxVisitor();
+            TaxHolidayVisitor taxHolidayVisitor = new TaxHolidayVisitor();
+
+            Necessity necessity = new Necessity(12.9);
+            var taxedVal = necessity.Accept(taxVisitor);
+            Console.WriteLine("Taxed value for Necessity is {0}", taxedVal);
+
+            var taxedHolidayVal = necessity.Accept(taxHolidayVisitor);
+            Console.WriteLine("Taxed holiday value for Necessity is {0}", taxedHolidayVal);
+
+            Tobacco tobacco = new Tobacco(15.18);
+            var tobaccoTaxedVal = tobacco.Accept(taxVisitor);
+            Console.WriteLine("Taxed value for Tobacco is {0}", tobaccoTaxedVal);
+
+            var tobaccoTaxedHolidayVal = tobacco.Accept(taxHolidayVisitor);
+            Console.WriteLine("Taxed holiday value for Tobacco is {0}", tobaccoTaxedHolidayVal);
+
+            #endregion
+
+            #endregion
+
+
+            #endregion
+
             Console.ReadKey();
         }
 

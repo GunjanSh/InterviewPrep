@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp2.Patterns.Visitor
+namespace ConsoleApp2.Patterns.Behavioral.Visitor
 {
     public class Tobacco : IVisitable
     {
@@ -17,7 +17,7 @@ namespace ConsoleApp2.Patterns.Visitor
 
         public double GetPrice()
         {
-            return this.Price;
+            return Price;
         }
 
         public double Accept(IVisitor visitor)
