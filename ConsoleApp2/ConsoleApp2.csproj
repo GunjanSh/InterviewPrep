@@ -26,7 +26,6 @@
     <Folder Include="Patterns\Behavioral\Strategy\" />
     <Folder Include="Patterns\Creational\Factory\" />
     <Folder Include="Patterns\Creational\Singleton\" />
-    <Folder Include="Patterns\Structural\Bridge\" />
   </ItemGroup>
 
 </Project>

@@ -10,6 +10,7 @@ using ConsoleApp2.Patterns.Creational.Builder___ProductBuilder;
 using ConsoleApp2.Patterns.Creational.Builder___RobotBuilder;
 using ConsoleApp2.Patterns.Creational.Prototype___PersonDetailsClone;
 using ConsoleApp2.Patterns.Structural.Adapter___GamePlayerAndRobot;
+using ConsoleApp2.Patterns.Structural.Bridge;
 using ConsoleApp2.Patterns.Structural.Facade___BankMoneyWithdrawal;
 using ConsoleApp2.Queues;
 using ConsoleApp2.Recursion;
@@ -549,6 +550,8 @@ namespace ConsoleApp2
 
             #region Creational Patterns
 
+            Console.WriteLine("\n ---------------------- Builder design pattern - Robot builder: ----------------------  \n");
+
             #region Builder Pattern - Robot Builder
 
             Robot robot = new();
@@ -558,6 +561,8 @@ namespace ConsoleApp2
             director.PrintRobotDetails();
 
             #endregion
+
+            Console.WriteLine("\n ---------------------- Builder design pattern - Product builder: ----------------------  \n");
 
             #region Builder Pattern - Product Builder
 
@@ -583,6 +588,8 @@ namespace ConsoleApp2
             ((ConcreteBuilder)productBuilder).GetProduct();
 
             #endregion
+
+            Console.WriteLine("\n ---------------------- Prototype design pattern ----------------------  \n");
 
             #region Prototype Pattern
 
@@ -624,6 +631,8 @@ namespace ConsoleApp2
 
             #region Structural Patterns
 
+            Console.WriteLine("\n ---------------------- Adapter design pattern ----------------------  \n");
+
             #region Adapter Pattern
 
             EnemyTank enemyTank = new EnemyTank();
@@ -650,6 +659,8 @@ namespace ConsoleApp2
 
             #endregion
 
+            Console.WriteLine("\n ---------------------- Facade design pattern ----------------------  \n");
+
             #region Facade
 
             BankFacade facade = new BankFacade(12345678, 1234);
@@ -659,12 +670,33 @@ namespace ConsoleApp2
 
             #endregion
 
+            Console.WriteLine("\n ---------------------- Bridge design pattern ----------------------  \n");
+
             #region Bridge Pattern
+
+            TV tv = new TV();
+            Radio radio = new Radio();
+
+            BasicRemoteControl basicRemoteControl = new BasicRemoteControl(tv);
+            basicRemoteControl.TogglePower();
+            tv.DisplayStatus();
+
+            AdvancedRemoteControl advancedRemoteControl = new AdvancedRemoteControl(radio);
+            advancedRemoteControl.TogglePower();
+            advancedRemoteControl.Mute();
+            radio.DisplayStatus();
+            advancedRemoteControl.VolumeUp();
+            advancedRemoteControl.ChannelUp();
+            advancedRemoteControl.ChannelUp();
+            radio.DisplayStatus();
+
             #endregion
 
             #endregion
 
             #region Behavioral Patterns
+
+            Console.WriteLine("\n ---------------------- Chain Of Responsibility design pattern ----------------------  \n");
 
             #region Chain Of Responsibility Pattern
 
@@ -695,6 +727,8 @@ namespace ConsoleApp2
 
             #endregion
 
+            Console.WriteLine("\n ---------------------- Observer design pattern ----------------------  \n");
+
             #region Observer Pattern
 
             // Either use Subject, Observer or Publisher, Subscriber terminology.
@@ -718,6 +752,8 @@ namespace ConsoleApp2
             publisher.SetGooglePrice(789.45);
 
             #endregion
+
+            Console.WriteLine("\n ---------------------- Visitor design pattern ----------------------  \n");
 
             #region Visitor Pattern
 
@@ -793,7 +829,7 @@ namespace ConsoleApp2
         public static int TrapRainWater3(int[] arr)
         {
             //[0, 1, 0, 2]
-            // 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1            --> 6
+            // 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1            6
             int leftMax = 0, rightMax = 0;
             int left = 0, right = arr.Length - 1;
             int waterHeight = 0;
