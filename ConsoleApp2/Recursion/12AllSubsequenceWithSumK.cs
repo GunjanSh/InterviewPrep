@@ -14,19 +14,19 @@ namespace ConsoleApp2.Recursion
             List<int> list = new List<int> { 1, 2, 1 };
             int sum = 2;
 
-            List<List<int>> subsList = new List<List<int>>();
+            IList<IList<int>> subsList = new List<IList<int>>();
             List<int> tempList = new List<int>();
 
             //NOTE: Check Striver approach.
             Subsequence(0, sum, sum, list, tempList, subsList);
 
-            subsList = new List<List<int>>();
+            subsList = new List<IList<int>>();
             tempList = new List<int>();
 
             SubsequenceStriver(0, 0, sum, list, tempList, subsList);
         }
 
-        static void Subsequence(int index, int target, int sum, List<int> input, List<int> tempList, List<List<int>> subsequenceList)
+        static void Subsequence(int index, int target, int sum, List<int> input, List<int> tempList, IList<IList<int>> subsequenceList)
         {
             //if (target == 0 && index == input.Count)
             //{
@@ -60,8 +60,8 @@ namespace ConsoleApp2.Recursion
         }
 
         // Removes additional checks from previous approach / method.
-        static void SubsequenceStriver(int index, int target, int sum, List<int> input, List<int> tempList, List<List<int>> subsequenceList)
-        {
+        static void SubsequenceStriver(int index, int target, int sum, List<int> input, List<int> tempList, IList<IList<int>> subsequenceList)
+        {                    
             if (index == input.Count)
             {
                 if (target == sum)

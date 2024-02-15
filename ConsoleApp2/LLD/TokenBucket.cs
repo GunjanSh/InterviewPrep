@@ -11,6 +11,7 @@ namespace ConsoleApp2.MS
     {
         private int bucketCapacity;
         private int refillRate;
+        //private readonly ConcurrentQueue<int> queue = new();
         private ConcurrentBag<int> currentCapacity;
         private ConcurrentBag<double> lastUpdatedTime;
         private object lockObj = new object();
@@ -27,6 +28,7 @@ namespace ConsoleApp2.MS
         {
             lock (lockObj)
             {
+                //queue.Enqueue(1);
                 refreshBucket();
                 if (this.currentCapacity.TryTake(out int result) && result > 0)
                 {

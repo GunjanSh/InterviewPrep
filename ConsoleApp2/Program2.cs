@@ -19,6 +19,7 @@ using ConsoleApp2.Trees;
 using ConsoleApp2.Tries;
 using ConsoleApp2.TwoPointers;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -43,6 +44,64 @@ namespace ConsoleApp2
     {
         public static void Main(string[] args)
         {
+            #region WiseTech assessment
+            //    List<List<int>> logData = new List<List<int>>
+            //    {
+            //        new List<int> {1,3},
+            //        new List<int> {2,6},
+            //        new List<int> {1,5},
+            //    };
+
+            //    List<int> query = new List<int> { 10, 11 };
+            //    getStaleServerCount(3, logData, query, 5);
+
+
+            //List<List<int>> logData = new List<List<int>>
+            //{
+            //    new List<int> {3, 2},
+            //    new List<int> {4, 3},
+            //    new List<int> {2, 6},
+            //    new List<int> {6, 3},
+            //};
+
+            //List<int> query = new List<int> { 3, 2, 6 };
+            //getStaleServerCount(6, logData, query, 2);
+
+            List<List<int>> logData = new List<List<int>>
+        {
+            new List<int> {1,3},
+            new List<int> {2,6},
+            new List<int> {1,5},
+            new List<int> {3,4},
+        };
+
+            List<int> query = new List<int> { 10, 6 };
+            getStaleServerCount(4, logData, query, 5);
+
+            var products = new List<List<string>>
+            {
+                new List<string> {"10", "sale", "january-sale" },
+                new List<string> {"200", "sale", "EMPTY" },
+
+                //new List<string> {"3" },
+                //new List<string> {"48" },
+                //new List<string> { "3" },
+                //new List<string> { "5" },
+            };
+
+            var discounts = new List<List<string>>
+            {
+                new List<string> {"sale", "0", "10" },
+                new List<string> {"january-sale", "1", "10"},
+                //new List<string> {"d0", "1", "1" },
+                //new List<string> {"d1", "2", "4" },
+                //new List<string> {"d2", "2", "4" },
+            };
+
+            findLowestPrice2(products, discounts);
+
+            #endregion
+
             //byte[] byt;
 
             //var arr = new int[] { 0, 1, 0, 2 };
@@ -782,6 +841,232 @@ namespace ConsoleApp2
             #endregion
 
             Console.ReadKey();
+        }
+
+        public static int findLowestPrice2(List<List<string>> products, List<List<string>> discounts)
+        {
+            Dictionary<string, (int type, int value)> discountMap = new Dictionary<string, (int type, int value)>();
+
+            foreach (var discount in discounts)
+            {
+                int.TryParse(discount[1], out var type);
+                int.TryParse(discount[2], out var value);
+
+                if (!discountMap.ContainsKey(discount[0]))
+                {
+                    discountMap[discount[0]] = (type, value);
+                }
+            }
+
+            // discountMap["EMPTY"] = (0, 0);
+
+            var totalAmount = 0;
+            double currentAmount = 0;
+
+            foreach (var product in products)
+            {
+                var productPrice = double.Parse(product[0]);
+                currentAmount = Math.Min(currentAmount, productPrice);
+
+                for (var idx = 1; idx < product.Count; idx++)
+                {
+                    if (product[idx] == "EMPTY")
+                    {
+                        currentAmount = Math.Min(currentAmount, productPrice);
+                    }
+                    else
+                    if (discountMap.ContainsKey(product[idx]))
+                    {
+                        (int type, int value) = discountMap[product[idx]];
+
+                        switch (type)
+                        {
+                            case 0:
+                                currentAmount = Math.Min(currentAmount, value);
+                                break;
+                            case 1:
+                                var percent = Math.Round((double)productPrice - ((productPrice * (value / 100.00))));
+                                currentAmount = Math.Min(currentAmount, percent);
+                                break;
+                            case 2:
+                                var fixedAmt = Math.Round((double)productPrice - value);
+                                currentAmount = Math.Min(currentAmount, fixedAmt);
+                                break;
+                        }
+                    }
+                }
+                totalAmount += (int)Math.Round(currentAmount);
+            }
+
+            return totalAmount;
+        }
+
+        public static int findLowestPrice(List<List<string>> products, List<List<string>> discounts)
+        {
+            Dictionary<string, (int type, int value)> discountMap = new Dictionary<string, (int type, int value)>();
+
+            foreach (var discount in discounts)
+            {
+                int.TryParse(discount[1], out var type);
+                int.TryParse(discount[2], out var value);
+
+                if (!discountMap.ContainsKey(discount[0]))
+                {
+                    discountMap[discount[0]] = (type, value);
+                }
+            }
+
+            discountMap["EMPTY"] = (0, 0);
+
+            var totalAmount = 0;
+            int currentAmount = 0;
+
+            foreach (var product in products)
+            {
+                var productPrice = int.Parse(product[0]);
+                currentAmount = productPrice;
+
+                for (var idx = 1; idx < product.Count; idx++)
+                {
+                    if (product[idx] == "EMPTY")
+                    {
+                        currentAmount = Math.Min(currentAmount, productPrice);
+                    }
+                    else if (discountMap.ContainsKey(product[idx]))
+                    {
+                        (int type, int value) = discountMap[product[idx]];
+
+                        switch (type)
+                        {
+                            case 0:
+                                currentAmount = Math.Min(currentAmount, value);
+                                break;
+                            case 1:
+                                var percent = (int)Math.Round((double)productPrice - ((productPrice * value) / 100));
+                                currentAmount = Math.Min(currentAmount, percent);
+                                break;
+                            case 2:
+                                var fixedAmt = (int)Math.Floor((double)productPrice - value);
+                                currentAmount = Math.Min(currentAmount, fixedAmt);
+                                break;
+                        }
+                    }
+                }
+                totalAmount += currentAmount;
+            }
+
+            return totalAmount;
+        }
+
+        public static List<int> getTimes(List<int> time, List<int> directions)
+        {
+            var list = new List<int>() { };
+
+            for (var idx = 0; idx < time.Count; idx++)
+            {
+                list.Add(0);
+            }
+
+            Queue<int> entryQueue = new Queue<int>();
+            Queue<int> exitQueue = new Queue<int>();
+
+            int currentDirection = -1;
+            int currTime = 0;
+
+            for (var idx = 0; idx < directions.Count; idx++)
+            {
+                if (directions[idx] == 1)
+                {
+                    exitQueue.Enqueue(idx);
+                }
+                else
+                {
+                    entryQueue.Enqueue(idx);
+                }
+            }
+
+            while (exitQueue.Count > 0 && entryQueue.Count > 0)
+            {
+                // currTime = Math.Max(Math.Max(currTime, exitQueue.Peek()), entryQueue.Peek());
+
+                var exit = exitQueue.Peek();
+                var entry = entryQueue.Peek();
+
+                if (time[exit] <= currTime && time[entry] <= currTime)
+                {
+                    if (currentDirection == 1 || currentDirection == -1)
+                    {
+                        exitQueue.Dequeue();
+                        list[exit] = currTime;
+                        currentDirection = 1;
+                    }
+                    else
+                    {
+                        entryQueue.Dequeue();
+                        list[entry] = currTime;
+                        currentDirection = 0;
+                    }
+                }
+                else if (time[exit] <= currTime)
+                {
+                    exitQueue.Dequeue();
+                    list[exit] = currTime;
+                    currentDirection = 1;
+                }
+                else if (time[entry] <= currTime)
+                {
+                    entryQueue.Dequeue();
+                    list[entry] = currTime;
+                    currentDirection = 0;
+                }
+                else
+                {
+                    currTime = Math.Min(time[exit], time[entry]) - 1;
+                }
+
+                currTime++;
+            }
+
+            while (exitQueue.Count > 0)
+            {
+                currTime = Math.Max(currTime, time[exitQueue.Peek()]);
+                // Console.WriteLine("Exit {0}", currTime);         
+                list[exitQueue.Dequeue()] = currTime;
+                currTime++;
+                // currentDirection = 1;
+            }
+
+            while (entryQueue.Count > 0)
+            {
+                currTime = Math.Max(currTime, time[entryQueue.Peek()]);
+
+                // Console.WriteLine("Entry {0}", currTime);
+                list[entryQueue.Dequeue()] = currTime;
+                currTime++;
+                // currentDirection = 0;
+            }
+
+            return list;
+        }
+
+
+        public static List<int> getStaleServerCount(int n, List<List<int>> log_data, List<int> query, int x)
+        {
+            var tt =  Math.Floor(122.0);
+            Dictionary <string,(int type, int value)> discountMap = new Dictionary<string, (int type, int value)>();
+            var servers = new List<int>();
+            foreach (var qry in query)
+            {
+                int start = qry - x;
+                int end = qry;
+
+                var list = log_data.Where(x => x[1] >= start && x[1] <= end).DistinctBy(x => x[0]).Count();
+
+                servers.Add(n - list);
+
+            }
+
+            return servers;
         }
 
         public static int solve(int number)

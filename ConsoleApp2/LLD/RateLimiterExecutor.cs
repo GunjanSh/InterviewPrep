@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ConsoleApp2.LLD;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleApp2.MS
@@ -30,6 +32,7 @@ namespace ConsoleApp2.MS
             Parallel.For(1, 26, i => {
                 var isAllowed = tockenBucket.IsRequestAllowed();
                 Console.WriteLine("Request allowed is {0} for thread {1}", isAllowed, i);
+                //Thread.Sleep(1000);
             });
         }
 
