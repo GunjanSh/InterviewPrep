@@ -2,6 +2,7 @@
 using ConsoleApp2.DP;
 using ConsoleApp2.Graph;
 using ConsoleApp2.LinkedList;
+using ConsoleApp2.LLD.ParkingLot;
 using ConsoleApp2.MS;
 using ConsoleApp2.Patterns.Behavioral.Chain_of_Responsibility___Math_Operations;
 using ConsoleApp2.Patterns.Behavioral.Observer___Stocks_Notification;
@@ -26,6 +27,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 
 namespace ConsoleApp2
 {
@@ -44,6 +46,10 @@ namespace ConsoleApp2
     {
         public static void Main(string[] args)
         {
+
+            int[] preorder = new int[] { 3, 9, 20, 15, 7 }, inorder = new int[] { 9, 3, 15, 20, 7 };
+            var tree = ConstructTreeFromInorderAndPreorder.BuildTree(preorder, inorder);
+
             #region WiseTech assessment
             //    List<List<int>> logData = new List<List<int>>
             //    {
@@ -840,7 +846,68 @@ namespace ConsoleApp2
 
             #endregion
 
+            #region Low Level Design
+
+            LLDUseCases();
+
+            #endregion
+
             Console.ReadKey();
+        }
+
+        public static void LLDUseCases()
+        {
+            #region Parking Lot
+
+            List<ParkingSlot> twoWheeler = new List<ParkingSlot>
+            {
+                new ParkingSlot{ ParkingSlotId = 1, ParkingSlotType = ParkingSlotType.TwoWheeler },
+                new ParkingSlot{ ParkingSlotId = 2, ParkingSlotType = ParkingSlotType.TwoWheeler },
+                new ParkingSlot{ ParkingSlotId = 3, ParkingSlotType = ParkingSlotType.TwoWheeler },
+                new ParkingSlot{ ParkingSlotId = 4, ParkingSlotType = ParkingSlotType.TwoWheeler },
+                new ParkingSlot{ ParkingSlotId = 5, ParkingSlotType = ParkingSlotType.TwoWheeler },
+            };
+
+            List<ParkingSlot> fourWheelerCompact = new List<ParkingSlot>
+            {
+                new ParkingSlot{ ParkingSlotId = 6, ParkingSlotType = ParkingSlotType.FourWheelerCompact },
+                new ParkingSlot{ ParkingSlotId = 7, ParkingSlotType = ParkingSlotType.FourWheelerCompact },
+            };
+
+            List<ParkingSlot> fourWheelerMedium = new List<ParkingSlot>
+            {
+                new ParkingSlot{ ParkingSlotId = 8, ParkingSlotType = ParkingSlotType.FourWheelerMedium },
+                new ParkingSlot{ ParkingSlotId = 9, ParkingSlotType = ParkingSlotType.FourWheelerMedium },
+                new ParkingSlot{ ParkingSlotId = 10, ParkingSlotType = ParkingSlotType.FourWheelerLarge },
+            };
+
+            List<ParkingSlot> fourWheelerLarge = new List<ParkingSlot>
+            {
+                new ParkingSlot{ ParkingSlotId = 10, ParkingSlotType = ParkingSlotType.FourWheelerLarge },
+            };
+
+            List<ParkingSlot> fourWheelerLarge2 = new List<ParkingSlot>
+            {
+                new ParkingSlot{ ParkingSlotId = 10, ParkingSlotType = ParkingSlotType.FourWheelerLarge },
+                new ParkingSlot{ ParkingSlotId = 11, ParkingSlotType = ParkingSlotType.FourWheelerLarge },
+            };
+
+            ParkingLot parkingLot = new ParkingLot("testing", new Address("Bangalore", "Kar", 560032), new List<ParkingFloors>());
+            parkingLot.AddFloor(1, ParkingSlotType.TwoWheeler, twoWheeler);
+            parkingLot.AddFloor(1, ParkingSlotType.FourWheelerCompact, fourWheelerCompact);
+            parkingLot.AddFloor(1, ParkingSlotType.FourWheelerMedium, fourWheelerMedium);
+            parkingLot.AddFloor(1, ParkingSlotType.FourWheelerLarge, fourWheelerLarge);
+
+            parkingLot.AddFloor(2, ParkingSlotType.TwoWheeler, twoWheeler);
+            parkingLot.AddFloor(2, ParkingSlotType.FourWheelerCompact, fourWheelerCompact);
+            parkingLot.AddFloor(2, ParkingSlotType.FourWheelerLarge, fourWheelerLarge2);
+
+            Vehicle vehicle = new() { VehicleNumber = "12345", VehicleType = ParkingSlotType.FourWheelerCompact };
+            var ticket = parkingLot.AssignParkingTicket(vehicle);
+            Thread.Sleep(10000);
+            parkingLot.PayAndExit(ticket);
+
+            #endregion
         }
 
         public static int findLowestPrice2(List<List<string>> products, List<List<string>> discounts)
