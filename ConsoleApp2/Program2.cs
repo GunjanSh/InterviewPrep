@@ -3,6 +3,7 @@ using ConsoleApp2.DP;
 using ConsoleApp2.Graph;
 using ConsoleApp2.LinkedList;
 using ConsoleApp2.LLD.ParkingLot;
+using ConsoleApp2.LLD.Tic_Tac_Toe;
 using ConsoleApp2.MS;
 using ConsoleApp2.Patterns.Behavioral.Chain_of_Responsibility___Math_Operations;
 using ConsoleApp2.Patterns.Behavioral.Observer___Stocks_Notification;
@@ -906,6 +907,19 @@ namespace ConsoleApp2
             var ticket = parkingLot.AssignParkingTicket(vehicle);
             Thread.Sleep(10000);
             parkingLot.PayAndExit(ticket);
+
+            #endregion
+
+            #region Tic Tac Toe
+
+            List<Player> players = new List<Player>
+            { 
+                new Player(1, "Player 1", "player1@gmail.com", 'X'),
+                new Player(2, "Player 2", "player2@gmail.com", 'O'),
+            };
+
+            GameBoard board = new GameBoard(3, players);
+            board.StartGame();
 
             #endregion
         }
