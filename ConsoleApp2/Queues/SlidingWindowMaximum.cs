@@ -33,6 +33,7 @@ namespace ConsoleApp2.Queues
 
         static List<int> SlidingWindowOptimized(int[] arr, int windowSize)
         {
+            //Double ended queue is supported by linked list
             LinkedList<int> deq = new LinkedList<int>();
             List<int> output = new List<int>();
 

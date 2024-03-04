@@ -2,6 +2,7 @@
 using ConsoleApp2.DP;
 using ConsoleApp2.Graph;
 using ConsoleApp2.LinkedList;
+using ConsoleApp2.LLD.LRUCache;
 using ConsoleApp2.LLD.ParkingLot;
 using ConsoleApp2.LLD.Tic_Tac_Toe;
 using ConsoleApp2.MS;
@@ -919,7 +920,16 @@ namespace ConsoleApp2
             };
 
             GameBoard board = new GameBoard(3, players);
-            board.StartGame();
+            
+            //NOTE: Uncomment to start the game.
+            //board.StartGame();
+
+            #endregion
+
+            #region LRU Cache
+
+            LRUCache_Caller cache = new LRUCache_Caller();
+            cache.TestLruCache();
 
             #endregion
         }
