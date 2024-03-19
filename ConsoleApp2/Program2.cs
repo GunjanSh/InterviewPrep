@@ -2,6 +2,7 @@
 using ConsoleApp2.DP;
 using ConsoleApp2.Graph;
 using ConsoleApp2.LinkedList;
+using ConsoleApp2.LLD.Elevator;
 using ConsoleApp2.LLD.LRUCache;
 using ConsoleApp2.LLD.ParkingLot;
 using ConsoleApp2.LLD.Tic_Tac_Toe;
@@ -14,6 +15,8 @@ using ConsoleApp2.Patterns.Creational.Builder___RobotBuilder;
 using ConsoleApp2.Patterns.Creational.Prototype___PersonDetailsClone;
 using ConsoleApp2.Patterns.Structural.Adapter___GamePlayerAndRobot;
 using ConsoleApp2.Patterns.Structural.Bridge;
+using ConsoleApp2.Patterns.Structural.Decorator___CoffeeMaker;
+using ConsoleApp2.Patterns.Structural.Decorator___Pizza;
 using ConsoleApp2.Patterns.Structural.Facade___BankMoneyWithdrawal;
 using ConsoleApp2.Queues;
 using ConsoleApp2.Recursion;
@@ -759,6 +762,14 @@ namespace ConsoleApp2
 
             #endregion
 
+            #region Decorator Pattern
+
+            CoffeMaker.PrepareCoffee();
+
+            PizzaMaker.PreparePizza();
+
+            #endregion
+
             #endregion
 
             #region Behavioral Patterns
@@ -930,6 +941,17 @@ namespace ConsoleApp2
 
             LRUCache_Caller cache = new LRUCache_Caller();
             cache.TestLruCache();
+
+            #endregion
+
+            #region Elevator algo
+
+            List<int> requests = new List<int> { 3, 7, 2, 8, 6, 1, 9, 5 };
+            int initialFloor = 4;
+
+            int seekTime = ScanAlgo.ElevatorAlgo(requests, initialFloor);
+
+            Console.WriteLine("Total seek time using Elevator algo is : {0}", seekTime);
 
             #endregion
         }

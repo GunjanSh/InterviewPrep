@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="LLD\Elevator\" />
     <Folder Include="LLD\BookMyShow\" />
     <Folder Include="Patterns\Behavioral\Strategy\" />
     <Folder Include="Patterns\Creational\Factory\" />

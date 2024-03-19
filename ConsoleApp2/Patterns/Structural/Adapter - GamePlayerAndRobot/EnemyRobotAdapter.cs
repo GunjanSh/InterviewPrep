@@ -8,7 +8,7 @@ namespace ConsoleApp2.Patterns.Structural.Adapter___GamePlayerAndRobot
 {
     /*
      * The Adapter must provide an alternative action for
-     * the the methods that need to be used because
+     * the methods that need to be used because
      * EnemyAttacker was implemented.
      * 
      * This adapter does this by containing an object
