@@ -247,9 +247,17 @@ namespace ConsoleApp2
 
             SgAssignment.Solve();
 
+            #region Tries Problems
+
             ValidPhoneDirectory.Solve();
 
             ContactFinder.Solve();
+
+            LongestCommonPrefix.FindLongestCommonPrefix();
+
+            NumberOfDistinctSubStringsInAString.GetDistinctSubStrings();
+
+            #endregion
 
             MostFrequentElementInBST.Solve();
 

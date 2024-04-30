@@ -21,18 +21,32 @@ namespace ConsoleApp2.DP
         {
             int[] stocks = new int[] { 1, 4, 5, 2, 4 };   // Ans: 4
 
-            int profit = MaxProfit(stocks);
+            int profit = MaxProfitEasy(stocks);
             Console.WriteLine("Profit earned after selling is {0}", profit);
 
             stocks = new int[] { 1, 2 };   // Ans: 1
 
-            profit = MaxProfit(stocks);
+            profit = MaxProfitEasy(stocks);
             Console.WriteLine("Profit earned after selling is {0}", profit);
 
             stocks = new int[] { 4, 2, 3, 8, 5, 9, 7 };   // Ans: 7
 
-            profit = MaxProfit(stocks);
+            profit = MaxProfitEasy(stocks);
             Console.WriteLine("Profit earned after selling is {0}", profit);
+        }
+
+        private static int MaxProfitEasy(int[] stocks)
+        {
+            int maxProfit = int.MinValue;
+            int minPrice = int.MaxValue;
+
+            for(int i = 0; i < stocks.Length; i++)
+            {
+                minPrice = Math.Min(minPrice, stocks[i]);
+                maxProfit = Math.Max(maxProfit, stocks[i] - minPrice);
+            }
+
+            return maxProfit;
         }
 
         private static int MaxProfit(int[] stocks)
