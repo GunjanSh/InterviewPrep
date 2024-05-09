@@ -257,6 +257,8 @@ namespace ConsoleApp2
 
             NumberOfDistinctSubStringsInAString.GetDistinctSubStrings();
 
+            MaxXORWithElemFromOtherArray.GetMaxXOR();
+
             #endregion
 
             MostFrequentElementInBST.Solve();
@@ -340,6 +342,10 @@ namespace ConsoleApp2
             RotatedSortedArraySearch.Solve();
 
             HospitalShiftsOfDoctors.GetNumberOfHospitals();
+
+            LeadersInAnArray.FindLeaders();
+
+            FindDuplicatesInArray.FindDuplicates();
 
             var number = 83557;
             var isMagicNumber = IsMagicNumber1.isMagicNumber(number);
