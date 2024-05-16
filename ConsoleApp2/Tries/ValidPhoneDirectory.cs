@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2.Tries
 {
+    /*
+     *  Given a phone directory in the form of string array A containing N numeric strings.
+     *  If any phone number is prefix of another phone number then phone directory is invalid else it is valid.
+     *  You need to check whether the given phone directory is valid or not if it is valid then return 1 else return 0.
+     */
+
     internal class ValidPhoneDirectory
     {
         public static void Solve()

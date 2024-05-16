@@ -9,6 +9,7 @@ using ConsoleApp2.LLD.Tic_Tac_Toe;
 using ConsoleApp2.MS;
 using ConsoleApp2.Patterns.Behavioral.Chain_of_Responsibility___Math_Operations;
 using ConsoleApp2.Patterns.Behavioral.Observer___Stocks_Notification;
+using ConsoleApp2.Patterns.Behavioral.Strategy;
 using ConsoleApp2.Patterns.Behavioral.Visitor;
 using ConsoleApp2.Patterns.Creational.Builder___ProductBuilder;
 using ConsoleApp2.Patterns.Creational.Builder___RobotBuilder;
@@ -346,6 +347,8 @@ namespace ConsoleApp2
             LeadersInAnArray.FindLeaders();
 
             FindDuplicatesInArray.FindDuplicates();
+
+            GameOfLife2D.CallFunc();
 
             var number = 83557;
             var isMagicNumber = IsMagicNumber1.isMagicNumber(number);
@@ -868,8 +871,17 @@ namespace ConsoleApp2
 
             #endregion
 
+            Console.WriteLine("\n ---------------------- Strategy design pattern ----------------------  \n");
+
+            #region Strategy Pattern
+
+            List<int> data = new() { 5, 3, 8, 2, 9, 0, 3, 4, 7 };
+            Strategy strategy = new(new MergeSortAlgo());
+            strategy.SortData(data);
+
             #endregion
 
+            #endregion
 
             #endregion
 

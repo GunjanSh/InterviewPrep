@@ -9,6 +9,9 @@ namespace ConsoleApp2.Arrays
 {
     internal class FindDuplicatesInArray
     {
+        // Find duplicates and return the duplicate number and the missing number.
+        // NOTE: numbers start from 1 to N.
+
         public static void FindDuplicates()
         {
             int[] input = new int[] { 1, 2, 2, 4 };

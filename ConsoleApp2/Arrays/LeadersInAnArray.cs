@@ -23,6 +23,9 @@ namespace ConsoleApp2.Arrays
 
         static int[] FindLeadersInArray(int[] nums)
         {
+            // Start iterating from the end.
+            // Last elem itself is the leader, so add that to the list.
+
             List<int> result = new List<int>();
 
             int currMax = nums[nums.Length-1];

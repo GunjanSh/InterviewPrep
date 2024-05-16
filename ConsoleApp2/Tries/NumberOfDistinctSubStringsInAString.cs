@@ -24,14 +24,14 @@ namespace ConsoleApp2.Tries
 
         public static void GetDistinctSubStrings()
         {
-            var data = new int[][] { new int[] { 3, 1 }, new int[] { 5, 6 }, new int[] { 1, 3 } };
+            //var data = new int[][] { new int[] { 3, 1 }, new int[] { 5, 6 }, new int[] { 1, 3 } };
 
-            var sorted = data.OrderBy(x => x[1]).ToArray();
+            //var sorted = data.OrderBy(x => x[1]).ToArray();
 
-            foreach (var num in sorted)
-            {
-                Console.WriteLine("{0}, {1}", num[0], num[1]);
-            }
+            //foreach (var num in sorted)
+            //{
+            //    Console.WriteLine("{0}, {1}", num[0], num[1]);
+            //}
 
             var str = "abab";
             var counter = GetCountOfDistinctSubStrings(str);

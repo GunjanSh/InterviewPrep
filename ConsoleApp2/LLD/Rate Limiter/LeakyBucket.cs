@@ -23,6 +23,7 @@ namespace ConsoleApp2.LLD
             this.queueCapacity = capacity;
             this.queue = new ConcurrentQueue<int>() {  };
         }
+
         public bool IsRequestAllowed()
         {
             if (this.queue.Count < this.queueCapacity)

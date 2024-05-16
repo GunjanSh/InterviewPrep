@@ -85,7 +85,8 @@ namespace ConsoleApp2.LLD.ParkingLot
 
                 if (availableSlot != null)
                 {
-                    return availableSlot;
+                    slot = availableSlot;
+                    break;
                 }
             }
 

@@ -24,9 +24,7 @@
 
   <ItemGroup>
     <Folder Include="LLD\BookMyShow\" />
-    <Folder Include="Patterns\Behavioral\Strategy\" />
     <Folder Include="Patterns\Creational\Factory\" />
-    <Folder Include="Patterns\Creational\Singleton\" />
   </ItemGroup>
 
 </Project>

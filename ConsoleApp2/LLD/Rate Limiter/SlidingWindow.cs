@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2.LLD
 {
+    /*
+     *  We have a sliding window and allow requests within capacity and within the time frame defined.
+     *  Before granting, also remove old requests which are not within the current time frame (say 1 minute).
+     */
+
     internal class SlidingWindow : IRateLimiter
     {
         ConcurrentQueue<double> queue;

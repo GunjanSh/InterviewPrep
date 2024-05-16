@@ -12,31 +12,31 @@ namespace ConsoleApp2.LLD.LRUCache
         int Capacity;
 
         // Double ended queue is implemented by Linked list.
-        //Use dequeue to maintain the recently accessed key, where you add latest key to the beginning of the queue.
+        //Use dequeue to maintain the recently accessed key, where you add latest key to the end of the queue.
         LinkedList<int> Cache;
 
-        Dictionary<int, int> CacheDetails;
+        Dictionary<int, int> CacheDetailsDict;
 
         public LRUCache(int capacity) 
         {
             this.Cache = new LinkedList<int>();
-            this.CacheDetails = new Dictionary<int, int>();
+            this.CacheDetailsDict = new Dictionary<int, int>();
 
             this.Capacity = capacity;
         }
 
         public void Add(int key, int value)
         {
-            if (this.CacheDetails.Count >= this.Capacity)
+            if (this.CacheDetailsDict.Count >= this.Capacity)
             {
                 var firstNode = this.Cache.First();
                 this.Cache.RemoveFirst();
-                this.CacheDetails.Remove(firstNode);
+                this.CacheDetailsDict.Remove(firstNode);
             }
 
-            if (!this.CacheDetails.ContainsKey(key))
+            if (!this.CacheDetailsDict.ContainsKey(key))
             {
-                this.CacheDetails[key] = value;
+                this.CacheDetailsDict[key] = value;
                 this.Cache.AddLast(key);
             }
             else
@@ -47,16 +47,16 @@ namespace ConsoleApp2.LLD.LRUCache
 
         public void Update(int key, int value)
         {
-            this.CacheDetails[key] = value;
+            this.CacheDetailsDict[key] = value;
             this.UpdateRecency(key);
         }
 
         public int Get(int key)
         {
-            if (this.CacheDetails.ContainsKey(key))
+            if (this.CacheDetailsDict.ContainsKey(key))
             {
                 this.UpdateRecency(key);
-                return this.CacheDetails[key];
+                return this.CacheDetailsDict[key];
             }
 
             return -1;
@@ -65,7 +65,7 @@ namespace ConsoleApp2.LLD.LRUCache
         public void ClearCache()
         {
             this.Cache = new LinkedList<int>();
-            this.CacheDetails = new Dictionary<int, int>();
+            this.CacheDetailsDict = new Dictionary<int, int>();
         }
 
         //Remove the current key from the queue and add it at the end of the queue.

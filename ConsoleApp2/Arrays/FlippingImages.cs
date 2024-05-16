@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp2.Arrays
 {
     internal class FlippingImages
     {
+        // https://leetcode.com/problems/flipping-an-image/description/
+
         public static void Solve()
         {
             int[][] image = new int[][]
@@ -16,6 +14,12 @@ namespace ConsoleApp2.Arrays
                 new int[] {1, 0, 1 },
                 new int[] {0, 0, 0 },
             };
+
+            /*
+             *  0 1 1
+             *  1 0 1
+             *  0 0 0
+             */
 
             int rows = image.Length;
             int cols = image[0].Length;
