@@ -21,6 +21,7 @@ using ConsoleApp2.Patterns.Structural.Decorator___Pizza;
 using ConsoleApp2.Patterns.Structural.Facade___BankMoneyWithdrawal;
 using ConsoleApp2.Queues;
 using ConsoleApp2.Recursion;
+using ConsoleApp2.Sorting;
 using ConsoleApp2.Stacks;
 using ConsoleApp2.Trees;
 using ConsoleApp2.Tries;
@@ -632,6 +633,18 @@ namespace ConsoleApp2
             int size = len.Length;
             Console.WriteLine("Total cost for connecting"
                               + " ropes is " + ConnectRopes.minCost(len, size));
+
+            #region Sorting Algos
+
+            MergeSortAlgorithm.Sort();
+
+            BubbleSort.Sort();
+
+            QuickSort.Sort();
+
+            SelectionSort.Sort();
+
+            #endregion
 
             #region Design Patterns
 

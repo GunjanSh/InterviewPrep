@@ -15,6 +15,8 @@ namespace ConsoleApp2.MS
         {
             var obj = new RateLimiterExecutor();
 
+            // Task.Factory.StartNew(, TaskCreationOptions.LongRunning);
+
             Task.Run(async () => await obj.TestMethod())
             .ContinueWith(r => {
                 if (r.Status == TaskStatus.RanToCompletion)
