@@ -8,6 +8,8 @@ namespace ConsoleApp2.Sorting
 {
     // Take an element and place it in its correct order.
     // Start from the first element and keep swapping elements if found greater and until elem is placed in its correct order/position.
+    // TC: Best - O(n) when list is sorted, Avg - O(n^2), Worst - O(n^2)
+    // SC: O(1)
     internal class InsertionSort
     {
         public static void Sort()

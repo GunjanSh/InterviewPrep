@@ -11,6 +11,8 @@ namespace ConsoleApp2.Sorting
         // Move the max element to the correct position is the first pass.
         // NOTE: Total number of passes for unsorted array of Length "n" will be "n-1".
         // In the 1st pass, the max element will reach the last position.
+        // TC: Best - O(n) when list is sorted, Avg - O(n^2), Worst - O(n^2)
+        // SC: O(1)
 
         public static void Sort()
         {

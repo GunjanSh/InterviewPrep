@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2.Sorting
 {
+    // TC: Best - O(n log n) when list is sorted, Avg - O(n log n), Worst - O(n^2)
+    // SC: O(log n)
+
     internal class QuickSort
     {
         public static void Sort()

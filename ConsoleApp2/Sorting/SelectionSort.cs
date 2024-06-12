@@ -10,7 +10,8 @@ namespace ConsoleApp2.Sorting
     {
         // Select the minimum elem of the list and place it at the right position.By swapping with elem at index 0.
         // Then select the minimum elem of the remaining elements and place is at index 1.
-
+        // TC: Best - O(n^2) when list is sorted, Avg - O(n^2), Worst - O(n^2)
+        // SC: O(1)
         public static void Sort()
         {
             List<int> list = new() { 89, 76, 45, 92, 67, 12, 99 };

@@ -8,6 +8,9 @@ namespace ConsoleApp2.Sorting
 {
     public class MergeSortAlgorithm
     {
+        // TC: Best - O(n log n) when list is sorted, Avg - O(n log n), Worst - O(n log n)
+        // SC: O(n)
+
         public static void Sort()
         {
             var list = new List<int> { 3, 1, 2, 4, 1, 5, 6, 2, 4 };
