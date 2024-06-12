@@ -66,7 +66,7 @@ namespace ConsoleApp2.Sorting
             {
                 temp.Add(list[right]);
                 right++;
-            }
+            }                                                                                    
 
             for (int i = low; i <= high; i++)
             {

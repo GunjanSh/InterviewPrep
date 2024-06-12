@@ -8,6 +8,7 @@ namespace ConsoleApp2.Sorting
 {
     internal class BubbleSort
     {
+        // Move the max element to the correct position is the first pass.
         // NOTE: Total number of passes for unsorted array of Length "n" will be "n-1".
         // In the 1st pass, the max element will reach the last position.
 

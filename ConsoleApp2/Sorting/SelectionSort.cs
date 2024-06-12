@@ -8,6 +8,9 @@ namespace ConsoleApp2.Sorting
 {
     internal class SelectionSort
     {
+        // Select the minimum elem of the list and place it at the right position.By swapping with elem at index 0.
+        // Then select the minimum elem of the remaining elements and place is at index 1.
+
         public static void Sort()
         {
             List<int> list = new() { 89, 76, 45, 92, 67, 12, 99 };
@@ -24,6 +27,12 @@ namespace ConsoleApp2.Sorting
         static void SelectionSortAlgo(List<int> list)
         {
             // Select the min of all elems and move it to index 0
+
+            //Swap at index 0 with min elem from [0 to n-1]
+            //Swap at index 1 with min elem from [1 to n-1]
+            //Swap at index 2 with min elem from [2 to n-1]
+            //Swap at index n-2 with min elem from [0 to n-1]. Go until n-2 index as n-1 is the last index in the array.
+
             // Then, select min of remaining elems from 1 to n-1 and replace with list[1]
             // Then, select min of remaining elems from 2 to n-1 and replace with list[2]
             // Go on until n-2, as n-2 to n-1 is just element, hence outer loop is until n-2.
