@@ -7,6 +7,16 @@ using System.Xml.Linq;
 
 namespace ConsoleApp2.Graph
 {
+    /*
+     *  For 4 directions
+     *  rows --> -1  0  1  0
+     *  cols -->  0 -1  0  1
+     *  
+     *  int[] rowIndices = new int[8] { -1, -1, -1, 1, 1, 1,  0, 0};
+     *  int[] colIndices = new int[8] { 0,  1,  -1, 0, 1, -1, -1, 1};
+     *  
+     */
+
     public class NodeDistance
     {
         public int Distance;

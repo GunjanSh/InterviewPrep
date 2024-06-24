@@ -31,6 +31,7 @@ namespace ConsoleApp2.Sorting
             {
                 int j = i;
 
+                //NOTE: j > 0 and not >= as it will give IndexOutOfBoundsException for list[j-1].
                 while ( j > 0 && list[j-1] < list[j])
                 {
                     int temp = list[j - 1];
