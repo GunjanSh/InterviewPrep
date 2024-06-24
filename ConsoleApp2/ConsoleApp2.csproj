@@ -8,23 +8,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Patterns\Adapter\**" />
-    <Compile Remove="Patterns\Chain of Responsibility\**" />
-    <Compile Remove="Patterns\Facade\**" />
-    <Compile Remove="Patterns\Observer\**" />
-    <EmbeddedResource Remove="Patterns\Adapter\**" />
-    <EmbeddedResource Remove="Patterns\Chain of Responsibility\**" />
-    <EmbeddedResource Remove="Patterns\Facade\**" />
-    <EmbeddedResource Remove="Patterns\Observer\**" />
-    <None Remove="Patterns\Adapter\**" />
-    <None Remove="Patterns\Chain of Responsibility\**" />
-    <None Remove="Patterns\Facade\**" />
-    <None Remove="Patterns\Observer\**" />
+    <Compile Remove="Design Patterns\Adapter\**" />
+    <Compile Remove="Design Patterns\Chain of Responsibility\**" />
+    <Compile Remove="Design Patterns\Facade\**" />
+    <Compile Remove="Design Patterns\Observer\**" />
+    <EmbeddedResource Remove="Design Patterns\Adapter\**" />
+    <EmbeddedResource Remove="Design Patterns\Chain of Responsibility\**" />
+    <EmbeddedResource Remove="Design Patterns\Facade\**" />
+    <EmbeddedResource Remove="Design Patterns\Observer\**" />
+    <None Remove="Design Patterns\Adapter\**" />
+    <None Remove="Design Patterns\Chain of Responsibility\**" />
+    <None Remove="Design Patterns\Facade\**" />
+    <None Remove="Design Patterns\Observer\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="LLD\BookMyShow\" />
-    <Folder Include="Patterns\Creational\Factory\" />
+    <Folder Include="Design Patterns\Creational\Factory\" />
   </ItemGroup>
 
 </Project>
