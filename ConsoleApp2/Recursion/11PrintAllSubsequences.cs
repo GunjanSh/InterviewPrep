@@ -6,6 +6,17 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2.Recursion
 {
+    /*
+     * A subarray is a slice from a contiguous array (i.e., occupy consecutive positions) and inherently maintains the order of elements.
+     * For example, the subarrays of array {1, 2, 3} are {1}, {1, 2}, {1, 2, 3}, {2}, {2, 3}, and {3}.
+     * 
+     * A subsequence is a sequence that can be derived from another sequence by deleting some elements without changing 
+     * the order of the remaining elements. Subsequence need not be contiguous.
+     * For example, {A, B, D} is a subsequence of sequence {A, B, C, D, E} obtained after removing {C} and {E}.
+     * 
+     * A subset is any possible combination of the original set. 
+     * 
+     */
     // https://www.techiedelight.com/difference-between-subarray-subsequence-subset/
     // https://leetcode.com/discuss/study-guide/1497123/subarrays-vs-subsequence-vs-subsets with time complexities.
     // https://www.scaler.com/topics/difference-between-subarray-subset-and-subsequence/

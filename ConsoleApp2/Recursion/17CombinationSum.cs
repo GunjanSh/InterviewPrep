@@ -24,14 +24,14 @@ namespace ConsoleApp2.Recursion
             GetCombinations(numbers, 0, output, currentList, target, ref initialTarget);
         }
 
-        private static void GetCombinations(List<int> numbers, int index, List<List<int>> output, List<int> currentList, int target, ref int ongoingTarget)
+        private static void GetCombinations(List<int> input, int index, List<List<int>> output, List<int> currentList, int target, ref int ongoingTarget)
         {
-            if (index == numbers.Count)
+            if (index == input.Count)
             {
                 if (ongoingTarget == target)
                 {
                     output.Add(new List<int>(currentList));
-                    return;
+                    //return;
                 }
 
                 return;
@@ -42,18 +42,18 @@ namespace ConsoleApp2.Recursion
             // If we do not give this condition, it will pick number from the same index until we get stack overflow exception.
             // Pick until the remaining target.
 
-            if (numbers[index] <= remainingTarget)
+            if (input[index] <= remainingTarget)
             {
-                currentList.Add(numbers[index]);
-                ongoingTarget += numbers[index];
+                currentList.Add(input[index]);
+                ongoingTarget += input[index];
 
-                GetCombinations(numbers, index, output, currentList, target, ref ongoingTarget);
+                GetCombinations(input, index, output, currentList, target, ref ongoingTarget);
 
-                currentList.Remove(numbers[index]);
-                ongoingTarget -= numbers[index];
+                currentList.Remove(input[index]);
+                ongoingTarget -= input[index];
             }
 
-            GetCombinations(numbers, index + 1, output, currentList, target, ref ongoingTarget);
+            GetCombinations(input, index + 1, output, currentList, target, ref ongoingTarget);
         }
     }
 }

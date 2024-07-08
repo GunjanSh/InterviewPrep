@@ -233,6 +233,8 @@ namespace ConsoleApp2
 
             Dijkstra.Solve();
 
+            CloneGraph_DeepCopy.CloneGraph();
+
             DistanceOfNearestCell.Solve();
 
             List<List<int>> hfd = new List<List<int>>();
@@ -269,6 +271,14 @@ namespace ConsoleApp2
 
             //FlippingImages.Solve();
 
+            var dict = new Dictionary<int, int>();
+            dict[1] = 1;
+            dict[2] = 2;
+            dict[3] = 3;
+            dict[4] = 4;
+
+            var ts = dict.OrderByDescending(x => x.Value).Select(x => x.Key).Take(1);
+
             var strToSplit = "5";
             var dsf = strToSplit.Split(",", StringSplitOptions.RemoveEmptyEntries);
 
@@ -291,6 +301,8 @@ namespace ConsoleApp2
             NumberOfIslands.Solve();
 
             CycleInUndirectedGraph.Solve();
+
+            CountConnectedComponents_UndirectedGraph.CountConnectedComponents();
 
             SimplifyDirectoryPath.Solve();
 
@@ -342,6 +354,10 @@ namespace ConsoleApp2
             TrapRainWater.GetTrappedRainWater();
 
             RotatedSortedArraySearch.Solve();
+
+            Wordle.WordleGame();
+
+            WordleWorking.WordleGame();
 
             HospitalShiftsOfDoctors.GetNumberOfHospitals();
 

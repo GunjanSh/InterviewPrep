@@ -15,6 +15,12 @@ namespace ConsoleApp2.Patterns.Structural.Decorator___CoffeeMaker
 
         public override double GetBeverageCost()
         {
+            //var output = new List<Tuple<(string type, decimal amount)>>();
+
+            //output.Add(Tuple.Create(("dsad", (decimal)10)));
+            //var output = new List<Tuple<string, int>>();
+            //output.Add(Tuple.Create("sds", 1));
+
             return 20;            
         }
     }

@@ -24,7 +24,7 @@ namespace ConsoleApp2.Recursion
             GetSubset(nums, 0, temp, output);
         }
 
-        static void GetSubset(List<int> list, int index, List<int> temp, List<List<int>> output)
+        static void GetSubset(List<int> input, int index, List<int> temp, List<List<int>> output)
         {
             //Since it is subset, we don't have to check for base case.
 
@@ -36,14 +36,14 @@ namespace ConsoleApp2.Recursion
             //}
 
             //NOTE: loop starts from index passed and not 0.
-            for (int i = index; i < list.Count; i++)
+            for (int i = index; i < input.Count; i++)
             {
                 //Can either write (i > index) or (i != index)
-                if (i > index && list[i] == list[i - 1]) continue;
+                if (i > index && input[i] == input[i - 1]) continue;
 
-                temp.Add(list[i]);
-                GetSubset(list, i + 1, temp, output);
-                temp.Remove(list[i]);
+                temp.Add(input[i]);
+                GetSubset(input, i + 1, temp, output);
+                temp.Remove(input[i]);
 
                 //In this pattern, we don't have to call the method again.
                 //GetSubset(list, i + 1, temp, output);

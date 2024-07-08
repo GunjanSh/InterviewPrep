@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace ConsoleApp2.Patterns.Behavioral.Visitor
 {
     /*
+     * * LETS YOU SEPARATE ALGORITHMS FROM THE OBJECTS ON WHICH THEY OPERATE.
      * * Visitor pattern allows you to add methods to classes without much altering to those classes.
      * * Allows you to define external classes that can extend other classes without majorly editing them.
      * * Lets you separate algorithms from the objects on which they operate.

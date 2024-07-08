@@ -18,11 +18,11 @@ namespace ConsoleApp2.Recursion
             GetPermutations(numbers, output, 0);
         }
 
-        static void GetPermutations(List<int> numbers, List<List<int>> output, int index)
+        static void GetPermutations(List<int> input, List<List<int>> output, int index)
         {
-            if (index == numbers.Count)
+            if (index == input.Count)
             {
-                output.Add(new List<int>(numbers));
+                output.Add(new List<int>(input));
                 return;
             }
 
@@ -42,13 +42,13 @@ namespace ConsoleApp2.Recursion
             // For left recursion, swap 2 with 2, swap 2 with 3
             
             //NOTE: For loop iterates from index to n-1
-            for(int idx = index; idx < numbers.Count; idx++)
+            for(int idx = index; idx < input.Count; idx++)
             {
                 //Swap the idx with index being passed and back track
-                Swap(idx, index, numbers);
+                Swap(idx, index, input);
                 //NOTE: Move to the next index in the array, hence its index+1 and not idx.
-                GetPermutations(numbers, output, index+1);
-                Swap(idx, index, numbers);
+                GetPermutations(input, output, index+1);
+                Swap(idx, index, input);
             }
         }
 

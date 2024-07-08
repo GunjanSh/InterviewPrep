@@ -27,26 +27,26 @@ namespace ConsoleApp2.Recursion
             //GetPermutations(numbers, 0, list, output);
         }
 
-        static void GetPermutationsWorking(List<int> nums, List<int> list, List<List<int>> output, bool[] visited, int index)
+        static void GetPermutationsWorking(List<int> input, List<int> list, List<List<int>> output, bool[] visited, int index)
         {
-            if (list.Count == nums.Count)
+            if (list.Count == input.Count)
             {
                 output.Add(new List<int>(list));
                 return;
             }
 
             //NOTE: Loop starts from 0 and goes through all the elements in the array, hence visited array is used.
-            for (int idx = 0; idx < nums.Count; idx++)
+            for (int idx = 0; idx < input.Count; idx++)
             {
                 if (!visited[idx])
                 {
                     visited[idx] = true;
-                    list.Add(nums[idx]);
+                    list.Add(input[idx]);
 
                     // NOTE: We need to increment index and not loop idx, as we are iterating over the entire array.
-                    GetPermutationsWorking(nums, list, output, visited, index + 1);
+                    GetPermutationsWorking(input, list, output, visited, index + 1);
 
-                    list.Remove(nums[idx]);
+                    list.Remove(input[idx]);
                     visited[idx] = false;
                 }
             }

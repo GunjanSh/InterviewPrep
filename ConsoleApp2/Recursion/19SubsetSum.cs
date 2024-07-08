@@ -22,7 +22,7 @@ namespace ConsoleApp2.Recursion
             GetSubsetSum(list, n, 0, 0, subsets);
         }
 
-        static void GetSubsetSum(List<int> list, int n, int index, int sum, List<int> subsets)
+        static void GetSubsetSum(List<int> input, int n, int index, int sum, List<int> subsets)
         {
             if (index == n)
             {
@@ -31,10 +31,10 @@ namespace ConsoleApp2.Recursion
             }
 
             //Pick, then add to the sum and move to next index.
-            GetSubsetSum(list, n, index + 1, sum + list[index], subsets);
+            GetSubsetSum(input, n, index + 1, sum + input[index], subsets);
 
             //Don't Pick, then don't add to the sum and move to next index.
-            GetSubsetSum(list, n, index + 1, sum , subsets);
+            GetSubsetSum(input, n, index + 1, sum , subsets);
         }
     }
 }

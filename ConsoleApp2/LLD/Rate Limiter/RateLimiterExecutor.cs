@@ -16,6 +16,52 @@ namespace ConsoleApp2.MS
             var obj = new RateLimiterExecutor();
 
             // Task.Factory.StartNew(, TaskCreationOptions.LongRunning);
+            using var cts = new CancellationTokenSource();
+            var token = cts.Token;
+
+            var task = Task.Factory.StartNew(() =>
+            {
+                for (int i = 0; i < 1000; i++)
+                {
+                    if (token.IsCancellationRequested)
+                    {
+                        Console.WriteLine("Task Cancelled");
+                        return;
+                    }
+
+                    Task.Delay(100);
+                }
+
+                Console.WriteLine("Task Completed");
+            }, token);
+
+            cts.Cancel();
+
+            task.Wait(token);
+
+            using var cts2 = new CancellationTokenSource();
+            var token2 = cts2.Token;
+
+            var task2 = Task.Factory.StartNew(() =>
+            {
+                for (int i = 0; i < 1000; i++)
+                {
+                    token.ThrowIfCancellationRequested();
+
+                    Task.Delay(100);
+                }
+
+                Console.WriteLine("Task Completed");
+            }, token2);
+
+            try
+            {
+                task2.Wait(token2);
+            }
+            catch (OperationCanceledException ex) 
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             Task.Run(async () => await obj.TestMethod())
             .ContinueWith(r => {
