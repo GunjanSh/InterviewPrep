@@ -66,7 +66,7 @@ class GFG
 		Console.WriteLine("Number of rectangular "
 		+ "islands is: " + countIslands(mat, m, n));
 
-		Console.ReadKey();
+		//Console.ReadKey();
 	}
 }
 

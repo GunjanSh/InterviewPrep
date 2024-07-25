@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="LLD\BookMyShow\" />
-    <Folder Include="Design Patterns\Creational\Factory\" />
   </ItemGroup>
 
 </Project>

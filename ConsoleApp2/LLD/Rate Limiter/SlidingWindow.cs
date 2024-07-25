@@ -31,6 +31,8 @@ namespace ConsoleApp2.LLD
         {
             var currTime = DateTime.UtcNow.TimeOfDay.TotalMilliseconds;
 
+            //this.timeInCurrentWindow = currTime;
+
             //Remove expired entries before you allow new entries, make space for new requests.
             RemoveExpiredEntries(currTime);
             if (this.queue.Count < this.queueCapacity)

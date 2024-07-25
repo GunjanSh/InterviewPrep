@@ -1,4 +1,6 @@
 ﻿using ConsoleApp2.Arrays;
+using ConsoleApp2.Design_Patterns.Creational.Abstract_Factory___LawnMower_With_Manufacturer;
+using ConsoleApp2.Design_Patterns.Creational.Factory;
 using ConsoleApp2.DP;
 using ConsoleApp2.Graph;
 using ConsoleApp2.LinkedList;
@@ -262,6 +264,8 @@ namespace ConsoleApp2
             NumberOfDistinctSubStringsInAString.GetDistinctSubStrings();
 
             MaxXORWithElemFromOtherArray.GetMaxXOR();
+
+            WordSearch_II___Using_Trie_and_BackTracking.Search();
 
             #endregion
 
@@ -665,6 +669,22 @@ namespace ConsoleApp2
             #region Design Patterns
 
             #region Creational Patterns
+
+            Console.WriteLine("\n ---------------------- Factory method design pattern - Lawn mower catalog: ----------------------  \n");
+
+            #region Factory Method Design Pattern
+
+            LawnMowerCatalogCaller.GetCatalogDetails();
+
+            #endregion
+
+            Console.WriteLine("\n ---------------------- Abstract Factory design pattern - Lawn mower catalog with manufacturer: ----------------------  \n");
+
+            #region Abstract Factory Design Pattern
+
+            Caller.GetCatalog();
+
+            #endregion
 
             Console.WriteLine("\n ---------------------- Builder design pattern - Robot builder: ----------------------  \n");
 
